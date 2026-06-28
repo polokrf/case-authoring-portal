@@ -195,7 +195,7 @@ https://case-authoring-portal.vercel.app/
 
 ## 📦 GitHub Repository
 
-https://github.com/your-username/case-authoring-portal
+https://github.com/polokrf/case-authoring-portal.git
 
 ---
 
