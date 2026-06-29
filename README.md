@@ -187,16 +187,15 @@ npm run lint
 
 ## 🌐 Live Demo
 
-https://your-demo-url.vercel.app
+https://case-authoring-portal.vercel.app/
 
-Deploy your own:
-https://vercel.com/new/clone?repository-url=https://github.com/your-username/case-authoring-portal
+
 
 ---
 
 ## 📦 GitHub Repository
 
-https://github.com/your-username/case-authoring-portal
+https://github.com/polokrf/case-authoring-portal.git
 
 ---
 
