@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
@@ -93,7 +93,7 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
   const { createCase, updateCase } = useCases();
-
+  
   const methods = useForm<FullCaseInput>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(fullCaseSchema) as any,
@@ -101,10 +101,13 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
     mode: 'onTouched',
   });
 
-  const isLastStep = step === STEPS.length - 1;
-  const isPreview = step === STEPS.length - 1;
+  const isLastStep = step === STEPS.length -1;
+  const isPreview = step === STEPS.length -1;
 
-  async function handleNext() {
+  console.log(isPreview ,step,STEPS.length)
+
+  async function handleNext(e: MouseEvent) {
+    e.preventDefault();
     if (isPreview) return;
 
     // Validate only the current step's fields
@@ -119,7 +122,7 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
       return;
     }
 
-    setStep((s) => s + 1);
+    setStep(s => s + 1);
   }
 
   async function handleSubmit(data: FullCaseInput) {
@@ -132,10 +135,13 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
         createCase(data);
         toast.success('Case created successfully');
       }
-      router.push('/');
+      setStep(0);
+      methods.reset(buildDefaultValues());
     } catch {
       toast.error('Something went wrong. Please try again.');
     } finally {
+      
+      
       setSubmitting(false);
     }
   }
@@ -189,7 +195,7 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
                       createCase(data);
                     }
                     toast.success('Saved as draft');
-                    router.push('/');
+                    router.push('/cases');
                   }}
                 >
                   <Save />
@@ -199,10 +205,12 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
 
               {isLastStep ? (
                 <button
-                  type="submit"
                   className="btn btn-primary gap-2"
                   disabled={submitting}
+                 
                 >
+
+                
                   {submitting && (
                     <span className="loading loading-spinner loading-xs" />
                   )}
