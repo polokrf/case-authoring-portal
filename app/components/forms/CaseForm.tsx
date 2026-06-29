@@ -160,19 +160,17 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
           </div>
 
           {/* Step content */}
-          <div className="form-section min-h-80">
-            {stepComponents[step]}
-          </div>
+          <div className="form-section min-h-80">{stepComponents[step]}</div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center md:flex-row flex-col   justify-between gap-3">
             <button
               type="button"
               className="btn btn-ghost gap-2"
-              onClick={() => setStep((s) => s - 1)}
+              onClick={() => setStep(s => s - 1)}
               disabled={step === 0}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft />
               Previous
             </button>
 
@@ -194,7 +192,7 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
                     router.push('/');
                   }}
                 >
-                  <Save className="w-3.5 h-3.5" />
+                  <Save />
                   Save Draft
                 </button>
               )}
@@ -205,8 +203,10 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
                   className="btn btn-primary gap-2"
                   disabled={submitting}
                 >
-                  {submitting && <span className="loading loading-spinner loading-xs" />}
-                  <Save className="w-4 h-4" />
+                  {submitting && (
+                    <span className="loading loading-spinner loading-xs" />
+                  )}
+                  <Save />
                   {existingCase ? 'Update Case' : 'Publish Case'}
                 </button>
               ) : (
@@ -216,7 +216,7 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
                   onClick={handleNext}
                 >
                   Next
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight />
                 </button>
               )}
             </div>

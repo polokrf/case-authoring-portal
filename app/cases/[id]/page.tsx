@@ -56,7 +56,7 @@ export default function ViewCasePage({ params }: PageProps) {
   function handleDelete() {
     deleteCase(id);
     toast.success('Case deleted');
-    router.push('/');
+    router.push('/cases');
   }
 
   return (
@@ -64,10 +64,10 @@ export default function ViewCasePage({ params }: PageProps) {
       <div className="max-w-3xl mx-auto space-y-4">
         {/* Top bar */}
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <button onClick={()=> router.back()} className="btn btn-ghost btn-sm gap-2">
+          <Link href={`/cases`}className="btn btn-ghost btn-sm gap-2">
             <ArrowLeft className="w-4 h-4" />
             Back
-          </button>
+          </Link>
           <div className="flex items-center gap-2">
             <Link href={`/cases/${id}/edit`} className="btn btn-outline btn-sm gap-2">
               <Pencil className="w-3.5 h-3.5" />

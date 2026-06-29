@@ -23,23 +23,37 @@ export default function Header({ onMenuClick, title = 'Dashboard' }: HeaderProps
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="btn btn-ghost btn-sm btn-circle" aria-label="Notifications">
+          <button
+            className="btn btn-ghost btn-sm btn-circle"
+            aria-label="Notifications"
+          >
             <Bell className="w-4 h-4" />
           </button>
           <div className="dropdown dropdown-end">
-            <button tabIndex={0} className="btn btn-ghost btn-sm btn-circle" aria-label="User menu">
+            <div
+              tabIndex={0}
+              className="btn btn-ghost btn-sm btn-circle "
+              aria-label="User menu"
+            >
               <div className="avatar placeholder">
-                <div className="bg-primary text-primary-content rounded-full w-8">
-                  <User className="w-4 h-4" />
+                <div className="bg-primary text-primary-content rounded-full w-8 flex justify-center items-center">
+                  <span>
+                    {' '}
+                    <User className="w-4 h-4" />
+                  </span>
                 </div>
               </div>
-            </button>
+            </div>
             <ul
               tabIndex={0}
               className="dropdown-content menu bg-base-100 rounded-box z-50 w-40 p-2 shadow border border-base-200"
             >
-              <li><a>Profile</a></li>
-              <li><a>Sign out</a></li>
+              <li>
+                <a>Profile</a>
+              </li>
+              <li>
+                <a>Sign out</a>
+              </li>
             </ul>
           </div>
         </div>
