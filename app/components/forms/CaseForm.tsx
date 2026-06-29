@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -106,7 +106,7 @@ export default function CaseForm({ existingCase }: CaseFormProps) {
 
   console.log(isPreview ,step,STEPS.length)
 
-  async function handleNext(e: MouseEvent) {
+  async function handleNext(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (isPreview) return;
 
